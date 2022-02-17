@@ -1,2 +1,2 @@
-# lambda-api-gw-demo
+# lambda-apigateway
 Lambda and API Gateway demo
