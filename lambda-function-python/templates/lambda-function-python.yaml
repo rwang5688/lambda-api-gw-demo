@@ -6,6 +6,7 @@ Parameters:
     Description: DynamoDB Table Name
     Type: String
     ConstraintDescription: DynamoDB Table Name
+    Default: lambda-function-python-table
 
   LambdaFunctionName:
     Description: Lambda Function Name
@@ -23,18 +24,19 @@ Parameters:
     Description: Deployment Package Name
     Type: String
     ConstraintDescription: Deployment Package Name
+    Default: lambda-function-python.zip
 
   LambdaFunctionHandler:
     Description: Lambda Function Handler (Entry Point)
     Type: String
     ConstraintDescription: Lambda Function Handler (Entry Point)
-    Default: lambda_function.lambda_handler
+    Default: lambda_function.handler
 
   RestApiName:
     Description: REST API Name
     Type: String
     ConstraintDescription: REST API Name
-    Default: lambda-function-python-api
+    Default: lambda-apigateway-api
 
   RestApiMethodName:
     Description: REST API Method Name
