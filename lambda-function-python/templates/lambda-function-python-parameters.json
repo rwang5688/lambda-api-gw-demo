@@ -1,5 +1,9 @@
 [
   {
+    "ParameterKey": "DynamoDBTableName",
+    "ParameterValue": "lambda-function-python-table"
+  },
+  {
     "ParameterKey": "LambdaFunctionName",
     "ParameterValue": "lambda-function-python"
   },

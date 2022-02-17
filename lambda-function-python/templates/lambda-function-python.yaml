@@ -2,6 +2,11 @@ AWSTemplateFormatVersion: 2010-09-09
 Description: Python Lambda Function and REST API Template
 
 Parameters:
+  DynamoDBTableName:
+    Description: DynamoDB Table Name
+    Type: String
+    ConstraintDescription: DynamoDB Table Name
+
   LambdaFunctionName:
     Description: Lambda Function Name
     Type: String
@@ -10,7 +15,7 @@ Parameters:
     Default: lambda-function-python
 
   LambdaFunctionDeploymentBucket:
-    Description: Deployment Bucket Bame
+    Description: Deployment Bucket Name
     Type: String
     ConstraintDescription: Deployment Bucket Name
 
@@ -54,13 +59,13 @@ Parameters:
     Default: dev
 
 Resources:
-  myDynamoDBTable:
+  DynamoDBTable:
     Type: AWS::DynamoDB::Table
     Properties:
       AttributeDefinitions: 
         - 
-          AttributeName: "number"
-          AttributeType: "N"
+          AttributeName: "id"
+          AttributeType: "S"
       KeySchema:
         - 
           AttributeName: "id"
@@ -68,11 +73,12 @@ Resources:
       ProvisionedThroughput:
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
-      TableName: "lambda-apigateway-table"
+      TableName: !Ref DynamoDBTableName
 
   LambdaIamPolicy:
     Type: 'AWS::IAM::Policy'
     Properties:
+      PolicyName: "lambda-function-policy"
       PolicyDocument:
         Version: "2012-10-17"
         Statement:
